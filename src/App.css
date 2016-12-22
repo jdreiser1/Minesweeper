@@ -1,0 +1,98 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
+#Lose {
+  position: absolute;
+  top: 50%;
+  font-size: 30px;
+  display: none;
+  animation: youLoseAnimation 10s;
+}
+
+
+@keyframes youLoseAnimation {
+    0% {left: 0%;}
+    100% {left: 100%;}
+}
+.cell > img {
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  margin: 0 auto;
+  width: auto;
+  /*overflow: hidden;*/
+  display: inline-block;
+  border: 1px solid black;
+}
+
+.container2{
+  padding-right: 15px;
+  padding-left: 15px;
+  margin: 8px;
+  display: inline-block;
+  width: auto;
+  border: 1px solid black;
+}
+
+.brow {
+  min-height: 23px;
+}
+.row {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+.outer {
+  width: 70%;
+  margin: 0 auto;
+  border: 1px solid red;
+  max-width: 140px;
+  max-height: 140px;
+  padding: 10px;
+}
+
+.cell{
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  width: 33px;
+  border: 1px solid black;
+}
+
+.col-xs-4 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 5vh;
+  width: 3vh;
+  border: 1px solid black;
+  font-size: 150%;
+  overflow: hidden;
+}
+
+
