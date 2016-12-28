@@ -2,14 +2,12 @@ let boardFunctions = {
 		evalMine(evt, index1, position, x){
 		let target = document.querySelector(`[data-index="${index1}"]`);
 		let counter = 0;
-		console.log(x)
 		if (target && !target.innerHTML && x.props.board[position[0]] && x.props.board[position[1]]){
-			if (evt && evt.shiftKey){
-				// let img = document.createElement("img");
-				// img.src = "http://www.freeminesweeper.org/images/bombflagged.gif"
-				// img.border = "0"
-				// target.appendChild(img);
-				console.log(target)
+			if (evt && evt.shiftKey){		
+				let img = document.createElement("img");
+				img.src = "http://www.freeminesweeper.org/images/bombflagged.gif"
+				img.border = "0"
+				target.appendChild(img);
 			}else {
 		if (x.props.board[position[0]][position[1]]){ //Check if the element the player picked has a mine
 			target.append("X")
@@ -54,6 +52,13 @@ let boardFunctions = {
 		}
 }}
 }
-}
+},
+	startTimer(x){
+		// let intervalId = setInterval(
+		// 	() => x.setState({time: x.state.time + 1}), 1000);
+		x.setState({firstClick: false}, 
+			x.setState({intervalId: setInterval(
+			() => x.setState({time: x.state.time + 1}), 1000)}))
+	},
 }
 export default boardFunctions

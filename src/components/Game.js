@@ -1,11 +1,12 @@
 import React, {Component} from 'react'
 import GameBoard from './GameBoard'
+import boardFunctions from '../models/eval'
 
 class Game extends Component {
 	constructor(){
 		super()
 		this.state = {
-		board: [								//Sets the board up
+		board: [								//Sets initial board up
 			[false, false, false, false, false, false, false, false],
 			[false, false, false, false, false, false, false, false],
 			[false, false, false, false, false, false, false, false],
@@ -15,13 +16,16 @@ class Game extends Component {
 			[false, false, false, false, false, false, false, false],
 			[false, false, false, false, false, false, false, false]
 		],
-		numOfMines: 10
+		numOfMines: 10,
+		time: 0,
+		firstClick: true
 	}	
 		this.newGame();
 	}
 
 	adjustDifficulty(){
 		let difficulty = document.getElementById("mySelect").value;
+		console.log(difficulty)
 		let length; //change to dimension
 		let numOfMines;
 		if (difficulty === "Beginner"){
@@ -35,38 +39,52 @@ class Game extends Component {
 			numOfMines = 99;
 		}
 		let board = [];
-		for(let i=0; i<length; i++){
+		for(let i=0; i<length; i++){							//fills board with 
+			console.log(i)
 			let subArr = [];
 			for(let j=0; j<length;j++){
+				console.log(j)
 				subArr.push(false)
 			}
 			board.push(subArr)
 		}
-		this.state.board = board;
-		this.state.numOfMines = numOfMines;
-		this.forceUpdate();
-		this.newGame();
-		console.log(this.state.board)
+		this.setState({
+			board: board,
+			numOfMines: numOfMines,
+		}, this.newGame());
 	}
 
 	newGame(){
-		for(let i=0; i < this.state.board.length; i++){					 //Clears the board of mines
-			for (let j=0; j < this.state.board[i].length; j++){
-			this.state.board[i][j] = false;
+	let board = this.state.board
+	let numOfMines = this.state.numOfMines;
+		for(let i=0; i < board.length; i++){					 //Clears the board of mines
+			for (let j=0; j < board[i].length; j++){
+			board[i][j] = false;
 		}
 	}
 	let x = 0;
 	let y = 0;
-	for(let i=0; i < this.state.numOfMines; i++){
-	x = Math.floor(Math.random() * this.state.board.length)			//sets a random mine on the board
-	y = Math.floor(Math.random() * this.state.board.length)
-	if (this.state.board[x][y] === true){
+	for(let i=0; i < numOfMines; i++){
+	x = Math.floor(Math.random() * board.length)			//sets a random mine on the board
+	y = Math.floor(Math.random() * board.length)
+	if (board[x][y] === true){
 	i--;
 	} else{
-	this.state.board[x][y] = true;
+	board[x][y] = true;
 	}
 	}
-	this.forceUpdate()
+	let self = this
+	// let intervalId = setInterval(function(){
+	// 	self.setState(
+	// 		{time: self.state.time + 1}
+	// 		)}, 1000)
+	this.setState({
+		board: board,
+		numOfMines: numOfMines,
+		time: 5,
+		firstClick: false
+	})
+	console.log(this.state.time)
 	let elementList = document.querySelectorAll('.col-xs-4')
 	for (let i = 0; i < elementList.length; i++){
 			elementList[i].innerHTML = ""
@@ -75,7 +93,13 @@ class Game extends Component {
 	render(){
 	return(
 		<div>
-		<GameBoard board={this.state.board} />
+		<GameBoard 
+			board={this.state.board} 
+			time={this.state.time} 
+			firstClick={this.state.firstClick} 
+			numOfMines={this.state.numOfMines}
+			intervalId={this.state.intervalId} 
+		/>
 		<button onClick={this.newGame.bind(this)}>
 		New Game
 		</button>

@@ -50,13 +50,37 @@
   border: 1px solid black;
 }
 
+.scoreboard{
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+}
+
+.timer, .numOfMines{
+  display: inline;
+}
+
+.timer{
+  border: 1px solid black;
+  margin: 5px;
+  width: auto;
+  padding: 5px;
+}
+
+.numOfMines{
+  border: 1px solid black;
+  margin: 5px;
+  width: auto;
+  padding: 5px;
+}
+
 .container2{
-  padding-right: 15px;
-  padding-left: 15px;
-  margin: 8px;
+  padding-right: 25px;
+  padding-left: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   display: inline-block;
   width: auto;
-  border: 1px solid black;
 }
 
 .brow {
@@ -88,11 +112,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 5vh;
+  height: 4vh;
   width: 3vh;
-  border: 1px solid black;
   font-size: 150%;
+  background:rgba(255,255,255,0.4);
   overflow: hidden;
+  line-height:4em;
+   text-align:center;
+   border:6px outset white;
+   background:rgba(255,255,255,0.4);
+   box-shadow: 5px 5px 15px rgba(255,255,255,0.4);
 }
 
 

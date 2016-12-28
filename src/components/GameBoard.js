@@ -1,17 +1,38 @@
 import React, {Component} from 'react'
 import Cell from './Cell'
 import boardFunctions from '../models/eval'
+// import MinesweeperModel from '../models/Minesweeper'
+import Timer from './Timer'
 
-class GameBoard extends Component {
+
+// var socket = io();
+
+class GameBoard extends Component {					//when refactoring make this presentational
+	constructor(props){
+		super(props)
+		this.state = {
+			time: this.props.time,
+			firstClick: this.props.firstClick,
+		}
+		this.intervalId = null
+	}
+
 	clickOn(evt, index1, position){
-		console.log(index1)
-		console.log(this.props.board)
+		console.log(this.state.time)
+		console.log(this.props.time)
+		if (this.state.firstClick){
+			boardFunctions.startTimer(this);
+		}
+		// let mine = [evt, index1, position]
+		// MinesweeperModel.create(mine)
+		// MinesweeperModel.show();
+		// socket.emit('mine click', {evt, index1, position1, this})
 		boardFunctions.evalMine(evt, index1, position, this);
 	}
 	render(){
 		let n = -1;
 		let cells = this.props.board.map ( (arr, i) => {
-			return (
+			return (				
 				<div key={i} className="row">
 				{arr.map((boolean, j) => {
 					n++;
@@ -25,6 +46,12 @@ class GameBoard extends Component {
 	return(
 		<div className="box">
  		<div className="container2">
+ 		<div className="scoreboard">
+ 		<div className="numOfMines">
+ 		{this.props.numOfMines}
+ 		</div>
+ 		<Timer firstClick={this.state.firstClick} time={this.state.time} />
+ 		</div>
  		{cells}
  		</div>
  		</div>

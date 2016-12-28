@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 
 class Cell extends Component {
+
 	render(){
 	return(
 		<div className="col-xs-4" 
@@ -11,4 +12,7 @@ class Cell extends Component {
 
 	}
 }
+
+
+
 export default Cell
