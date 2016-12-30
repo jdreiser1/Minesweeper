@@ -6,9 +6,9 @@ class Timer extends Component {
 		this.state = {
 			intervalId: null
 		}
-		this.startTimer();
+		// this.startTimer();
 	}
-	startTimer(){
+	// startTimer(){
 		// console.log("hit")
 		// if (this.props.firstClick){
 		// 	console.log(
@@ -18,7 +18,7 @@ class Timer extends Component {
 		// 		this.props.time += 1
 		// 		}, 1000)
 		// }
-	}
+	// }
 	render(){
 	return(
 	<div className="timer">

@@ -62,6 +62,7 @@ class Game extends Component {
 			board[i][j] = false;
 		}
 	}
+	console.log(board)
 	let x = 0;
 	let y = 0;
 	for(let i=0; i < numOfMines; i++){
@@ -74,21 +75,19 @@ class Game extends Component {
 	}
 	}
 	let self = this
-	// let intervalId = setInterval(function(){
-	// 	self.setState(
-	// 		{time: self.state.time + 1}
-	// 		)}, 1000)
+	let intervalId = setInterval(function(){
+		self.setState(
+			{time: self.state.time + 1}
+			)}, 1000)
+	let elementList = document.querySelectorAll(".col-xs-4")
+	elementList.forEach((val) => val.innerHTML = "")
+	console.log(elementList)
 	this.setState({
 		board: board,
 		numOfMines: numOfMines,
-		time: 5,
+		time: 0,
 		firstClick: false
-	})
-	console.log(this.state.time)
-	let elementList = document.querySelectorAll('.col-xs-4')
-	for (let i = 0; i < elementList.length; i++){
-			elementList[i].innerHTML = ""
-		}
+	}, console.log(this.state.time))
 	}
 	render(){
 	return(

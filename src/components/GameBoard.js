@@ -18,8 +18,7 @@ class GameBoard extends Component {					//when refactoring make this presentatio
 	}
 
 	clickOn(evt, index1, position){
-		console.log(this.state.time)
-		console.log(this.props.time)
+		console.log("jonnyboyclick")
 		if (this.state.firstClick){
 			boardFunctions.startTimer(this);
 		}
