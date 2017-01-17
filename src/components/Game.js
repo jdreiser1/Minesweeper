@@ -18,6 +18,7 @@ class Game extends Component {
 		],
 		numOfMines: 10,
 		time: 0,
+		intervalId: null,
 		firstClick: true
 	}	
 		this.newGame();
@@ -55,6 +56,11 @@ class Game extends Component {
 	}
 
 	newGame(){
+	console.log(this.state.intervalId)
+	if (this.state.intervalId){
+		console.log('hit')
+		clearInterval(this.state.intervalId)
+	}
 	let board = this.state.board
 	let numOfMines = this.state.numOfMines;
 		for(let i=0; i < board.length; i++){					 //Clears the board of mines
@@ -75,19 +81,18 @@ class Game extends Component {
 	}
 	}
 	let self = this
-	let intervalId = setInterval(function(){
+	this.state.intervalId = setInterval(function(){
 		self.setState(
 			{time: self.state.time + 1}
 			)}, 1000)
 	let elementList = document.querySelectorAll(".col-xs-4")
 	elementList.forEach((val) => val.innerHTML = "")
-	console.log(elementList)
 	this.setState({
 		board: board,
 		numOfMines: numOfMines,
 		time: 0,
 		firstClick: false
-	}, console.log(this.state.time))
+	}, ()=> console.log(this.state.time))
 	}
 	render(){
 	return(
@@ -97,7 +102,7 @@ class Game extends Component {
 			time={this.state.time} 
 			firstClick={this.state.firstClick} 
 			numOfMines={this.state.numOfMines}
-			intervalId={this.state.intervalId} 
+			// intervalId={this.state.intervalId} 
 		/>
 		<button onClick={this.newGame.bind(this)}>
 		New Game

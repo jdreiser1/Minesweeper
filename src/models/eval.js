@@ -56,7 +56,8 @@ let boardFunctions = {
 	startTimer(x){
 		// let intervalId = setInterval(
 		// 	() => x.setState({time: x.state.time + 1}), 1000);
-		x.setState({firstClick: false}, 
+		console.log(x)
+		x.setState({firstClick: false},
 			x.setState({intervalId: setInterval(
 			() => x.setState({time: x.state.time + 1}), 1000)}))
 	},
