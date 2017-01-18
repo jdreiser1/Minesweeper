@@ -7,7 +7,10 @@ class App extends Component {
     return (
       <div className="App">
  		<div id="Lose">
- 			You Lose
+ 			You Lose!!!
+ 		</div>
+ 		<div id="Won">
+ 			You Won!!!
  		</div>
       	<Game />
       </div>

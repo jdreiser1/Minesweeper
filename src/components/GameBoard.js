@@ -12,20 +12,14 @@ class GameBoard extends Component {					//when refactoring make this presentatio
 		super(props)
 		this.state = {
 			// time: this.props.time,
-			firstClick: this.props.firstClick,
+			numOfMines: this.props.numOfMines,
+			numOfFreeSpaces: (this.props.board.length * this.props.board.length) - this.props.numOfMines,
+			firstClick: this.props.firstClick
 		}
 		this.intervalId = null
 	}
 
 	clickOn(evt, index1, position){
-		console.log("jonnyboyclick")
-		if (this.state.firstClick){
-			boardFunctions.startTimer(this);
-		}
-		// let mine = [evt, index1, position]
-		// MinesweeperModel.create(mine)
-		// MinesweeperModel.show();
-		// socket.emit('mine click', {evt, index1, position1, this})
 		boardFunctions.evalMine(evt, index1, position, this);
 	}
 	render(){

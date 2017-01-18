@@ -6,7 +6,9 @@
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
 }
-
+body {
+  background-color: grey;
+}
 .App-header {
   background-color: #222;
   height: 150px;
@@ -29,9 +31,17 @@
   top: 50%;
   font-size: 30px;
   display: none;
+  z-index: 2;
   animation: youLoseAnimation 10s;
 }
-
+#Won {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  font-size: 30px;
+  display: none;
+  animation: youLoseAnimation 10s;
+}
 
 @keyframes youLoseAnimation {
     0% {left: 0%;}
@@ -40,14 +50,6 @@
 .cell > img {
   padding: 0;
   margin: 0;
-}
-
-.container {
-  margin: 0 auto;
-  width: auto;
-  /*overflow: hidden;*/
-  display: inline-block;
-  border: 1px solid black;
 }
 
 .scoreboard{
@@ -81,6 +83,7 @@
   padding-bottom: 10px;
   display: inline-block;
   width: auto;
+  border: 1px solid black;
 }
 
 .brow {

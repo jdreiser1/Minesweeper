@@ -8,6 +8,7 @@ let boardFunctions = {
 				img.src = "http://www.freeminesweeper.org/images/bombflagged.gif"
 				img.border = "0"
 				target.appendChild(img);
+				// x.setState({numOfMines: x.state.numOfMines - 1});
 			}else {
 		if (x.props.board[position[0]][position[1]]){ //Check if the element the player picked has a mine
 			target.append("X")
@@ -39,6 +40,15 @@ let boardFunctions = {
 			counter += 1
 		}
 		target.append("" + counter)
+		x.setState({
+			numOfFreeSpaces: x.state.numOfFreeSpaces - 1
+		}, () => {
+		console.log(x.state.numOfFreeSpaces)
+		if (x.state.numOfFreeSpaces === 0){
+			console.log("You Won")
+			let el2 = document.getElementById("Won")
+			el2.style.display = "block"
+		}
 		if (counter === 0){
 			// flag = !flag
 			this.evalMine(null, index1 - 1, [position[0],position[1]-1], x)
@@ -50,16 +60,17 @@ let boardFunctions = {
 			this.evalMine(null, index1 + x.props.board[0].length, [position[0]+1, position[1]], x)
 			this.evalMine(null, index1 + x.props.board[0].length + 1, [position[0]+1, position[1]+1], x)
 		}
+	})
 }}
 }
-},
-	startTimer(x){
-		// let intervalId = setInterval(
-		// 	() => x.setState({time: x.state.time + 1}), 1000);
-		console.log(x)
-		x.setState({firstClick: false},
-			x.setState({intervalId: setInterval(
-			() => x.setState({time: x.state.time + 1}), 1000)}))
-	},
+}
+	// startTimer(x){
+	// 	// let intervalId = setInterval(
+	// 	// 	() => x.setState({time: x.state.time + 1}), 1000);
+	// 	console.log(x)
+	// 	x.setState({firstClick: false},
+	// 		x.setState({intervalId: setInterval(
+	// 		() => x.setState({time: x.state.time + 1}), 1000)}))
+	// },
 }
 export default boardFunctions

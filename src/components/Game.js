@@ -31,7 +31,7 @@ class Game extends Component {
 		let numOfMines;
 		if (difficulty === "Beginner"){
 			length = 8;
-			numOfMines = 10;
+			numOfMines = 2;
 		}else if (difficulty === "Intermediate"){
 			length = 16;
 			numOfMines = 40;
@@ -41,10 +41,8 @@ class Game extends Component {
 		}
 		let board = [];
 		for(let i=0; i<length; i++){							//fills board with 
-			console.log(i)
 			let subArr = [];
 			for(let j=0; j<length;j++){
-				console.log(j)
 				subArr.push(false)
 			}
 			board.push(subArr)
@@ -56,10 +54,9 @@ class Game extends Component {
 	}
 
 	newGame(){
-	console.log(this.state.intervalId)
-	if (this.state.intervalId){
-		console.log('hit')
-		clearInterval(this.state.intervalId)
+	let el2 = document.getElementById("Lose")
+	if (el2){
+		el2.style.display = "none"
 	}
 	let board = this.state.board
 	let numOfMines = this.state.numOfMines;
@@ -68,7 +65,6 @@ class Game extends Component {
 			board[i][j] = false;
 		}
 	}
-	console.log(board)
 	let x = 0;
 	let y = 0;
 	for(let i=0; i < numOfMines; i++){
@@ -92,7 +88,7 @@ class Game extends Component {
 		numOfMines: numOfMines,
 		time: 0,
 		firstClick: false
-	}, ()=> console.log(this.state.time))
+	})
 	}
 	render(){
 	return(
