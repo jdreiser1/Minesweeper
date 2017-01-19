@@ -9,9 +9,6 @@ class App extends Component {
  		<div id="Lose">
  			You Lose!!!
  		</div>
- 		<div id="Won">
- 			You Won!!!
- 		</div>
       	<Game />
       </div>
     );
