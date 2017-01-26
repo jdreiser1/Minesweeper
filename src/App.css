@@ -1,4 +1,5 @@
 .App {
+  margin-top: 50px;
   text-align: center;
 }
 
@@ -7,7 +8,11 @@
   height: 80px;
 }
 body {
-  background-color: grey;
+  background: url(../public/img/mines.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+#font{
+  font-family: 'Stardos Stencil', bold;
 }
 .App-header {
   background-color: #222;
@@ -52,8 +57,9 @@ body {
   margin: 0;
 }
 
-.scoreboard{
-  border: 1px solid black;
+#scoreboard{
+  border: 2px solid black;
+  margin-bottom: 10px;
   display: flex;
   justify-content: space-between;
 }
@@ -61,7 +67,11 @@ body {
 .timer, .numOfMines{
   display: inline;
 }
-
+#buttons {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
 .timer{
   border: 1px solid black;
   margin: 5px;
@@ -83,7 +93,7 @@ body {
   padding-bottom: 10px;
   display: inline-block;
   width: auto;
-  border: 1px solid black;
+  border: 5px solid black;
 }
 
 .brow {
@@ -115,16 +125,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 41px;                                                                                           
+  height: 41px;
   width: 3vh;
   font-size: 150%;
-  background:rgba(255,255,255,0.4);
+  background:rgba(255,255,255,0.75);
   overflow: hidden;
   line-height:4em;
   text-align:center;
   border:6px outset white;
-  background:rgba(255,255,255,0.4);
   box-shadow: 5px 5px 15px rgba(255,255,255,0.4);
 }
-
-

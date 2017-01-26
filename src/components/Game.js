@@ -20,7 +20,7 @@ class Game extends Component {
 		time: 0,
 		intervalId: null,
 		firstClick: true
-	}	
+	}
 		this.newGame();
 	}
 
@@ -40,7 +40,7 @@ class Game extends Component {
 			numOfMines = 99;
 		}
 		let board = [];
-		for(let i=0; i<length; i++){							//fills board with 
+		for(let i=0; i<length; i++){							//fills board with
 			let subArr = [];
 			for(let j=0; j<length;j++){
 				subArr.push(false)
@@ -93,13 +93,15 @@ class Game extends Component {
 	render(){
 	return(
 		<div>
-		<GameBoard 
-			board={this.state.board} 
-			time={this.state.time} 
-			firstClick={this.state.firstClick} 
+		<div className="container2">
+		<GameBoard
+			board={this.state.board}
+			time={this.state.time}
+			firstClick={this.state.firstClick}
 			numOfMines={this.state.numOfMines}
-			// intervalId={this.state.intervalId} 
+			// intervalId={this.state.intervalId}
 		/>
+		<div id="buttons">
 		<button onClick={this.newGame.bind(this)}>
 		New Game
 		</button>
@@ -109,6 +111,8 @@ class Game extends Component {
 			<option value="Intermediate">Intermediate</option>
 			<option value="Expert">Expert</option>
 		</select>
+		</div>
+		</div>
 		</div>
 	)
 	}

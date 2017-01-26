@@ -25,7 +25,7 @@ class GameBoard extends Component {					//when refactoring make this presentatio
 	render(){
 		let n = -1;
 		let cells = this.props.board.map ( (arr, i) => {
-			return (				
+			return (
 				<div key={i} className="row">
 				{arr.map((boolean, j) => {
 					n++;
@@ -38,15 +38,13 @@ class GameBoard extends Component {					//when refactoring make this presentatio
 		})
 	return(
 		<div className="box">
- 		<div className="container2">
- 		<div className="scoreboard">
+ 		<div id="scoreboard">
  		<div className="numOfMines">
  		{this.props.numOfMines}
  		</div>
  		<Timer firstClick={this.state.firstClick} time={this.props.time} />
  		</div>
  		{cells}
- 		</div>
  		</div>
 	)
 	}
