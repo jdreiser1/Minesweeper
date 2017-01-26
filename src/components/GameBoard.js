@@ -37,18 +37,12 @@ class GameBoard extends Component {					//when refactoring make this presentatio
 		})
 	return(
 		<div className="box">
-		<h2>Minesweeper</h2>
- 	// 	<div className="container2">
- 		<div className="scoreboard">
- 		<div className="container3">
- 		<div>Num Of Mines</div>
+ 		<div id="scoreboard">
  		<div className="numOfMines">
+		<div>Num of Mines</div>
  		{this.props.numOfMines}
  		</div>
- 		</div>
- 		<div>Timer</div>
- 		<Timer time={this.props.time} />
- 		</div>
+ 		<Timer firstClick={this.state.firstClick} time={this.props.time} />
  		</div>
  		{cells}
  		</div>
