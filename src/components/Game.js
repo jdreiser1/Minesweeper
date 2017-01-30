@@ -26,18 +26,17 @@ class Game extends Component {
 
 	adjustDifficulty(){
 		let difficulty = document.getElementById("mySelect").value;
-		console.log(difficulty)
 		let length; //change to dimension
 		let numOfMines;
 		if (difficulty === "Beginner"){
-			length = 8;
-			numOfMines = 2;
+			length = 3;
+			numOfMines = 1;
 		}else if (difficulty === "Intermediate"){
 			length = 16;
 			numOfMines = 40;
 		}else if (difficulty === "Expert"){
-			length = 32;
-			numOfMines = 99;
+			length = 24;
+			numOfMines = 80;
 		}
 		let board = [];
 		for(let i=0; i<length; i++){							//fills board with
@@ -49,8 +48,8 @@ class Game extends Component {
 		}
 		this.setState({
 			board: board,
-			numOfMines: numOfMines,
-		}, this.newGame());
+			numOfMines: numOfMines
+		}, () => this.newGame());
 	}
 
 	newGame(){
@@ -87,7 +86,6 @@ class Game extends Component {
 		board: board,
 		numOfMines: numOfMines,
 		time: 0,
-		firstClick: false
 	})
 	}
 	render(){
@@ -97,7 +95,6 @@ class Game extends Component {
 		<GameBoard
 			board={this.state.board}
 			time={this.state.time}
-			firstClick={this.state.firstClick}
 			numOfMines={this.state.numOfMines}
 			// intervalId={this.state.intervalId}
 		/>

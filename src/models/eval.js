@@ -3,18 +3,21 @@ let boardFunctions = {
 		let target = document.querySelector(`[data-index="${index1}"]`);
 		let counter = 0;
 		if (target && !target.innerHTML && x.props.board[position[0]] && x.props.board[position[1]]){
-			if (evt && evt.shiftKey){		
+			if (evt && evt.shiftKey){
 				let img = document.createElement("img");
 				img.src = "http://www.freeminesweeper.org/images/bombflagged.gif"
 				img.border = "0"
 				target.appendChild(img);
-				// x.setState({numOfMines: x.state.numOfMines - 1});
+				x.setState({numOfMines: x.state.numOfMines - 1}, () => console.log(x.state.numOfMines));
+				if (x.props.board[position[0]][position[1]]){
+					x.setState({minesLeftToWin: x.state.minesLeftToWin - 1}, () => console.log(x.state.minesLeftToWin));
+				}
 			}else {
 		if (x.props.board[position[0]][position[1]]){ //Check if the element the player picked has a mine
 			target.append("X")
 			let el = document.getElementById("Lose")
 			el.style.display = "block"
-		}else{ 
+		}else{
 		if (position[0] && x.props.board[position[0]-1][position[1]]){ //Check if the element above the element picked is a space, and has a mine
 			counter += 1
 		} //now same as above but instead checking top right
@@ -43,14 +46,13 @@ let boardFunctions = {
 		x.setState({
 			numOfFreeSpaces: x.state.numOfFreeSpaces - 1
 		}, () => {
-		console.log(x.state.numOfFreeSpaces)
 		if (x.state.numOfFreeSpaces === 0){
 			console.log("You Won")
 			let el2 = document.getElementById("Won")
 			el2.style.display = "block"
 		}
 		if (counter === 0){
-			// flag = !flag
+			x.setState({numOfFreeSpaces: x.state.numOfFreeSpaces - 1}, () => {
 			this.evalMine(null, index1 - 1, [position[0],position[1]-1], x)
 			this.evalMine(null, index1 - x.props.board[0].length - 1, [position[0]-1, position[1]-1], x)
 			this.evalMine(null, index1 - x.props.board[0].length, [position[0]-1, position[1]], x)
@@ -59,18 +61,11 @@ let boardFunctions = {
 			this.evalMine(null, index1 + x.props.board[0].length - 1, [position[0]+1, position[1]-1], x)
 			this.evalMine(null, index1 + x.props.board[0].length, [position[0]+1, position[1]], x)
 			this.evalMine(null, index1 + x.props.board[0].length + 1, [position[0]+1, position[1]+1], x)
+			})
 		}
 	})
 }}
 }
 }
-	// startTimer(x){
-	// 	// let intervalId = setInterval(
-	// 	// 	() => x.setState({time: x.state.time + 1}), 1000);
-	// 	console.log(x)
-	// 	x.setState({firstClick: false},
-	// 		x.setState({intervalId: setInterval(
-	// 		() => x.setState({time: x.state.time + 1}), 1000)}))
-	// },
 }
 export default boardFunctions

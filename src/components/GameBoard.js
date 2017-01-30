@@ -13,6 +13,7 @@ class GameBoard extends Component {					//when refactoring make this presentatio
 		this.state = {
 			// time: this.props.time,
 			numOfMines: this.props.numOfMines,
+			minesLeftToWin: this.props.numOfMines,
 			numOfFreeSpaces: (this.props.board.length * this.props.board.length) - this.props.numOfMines
 		}
 		this.intervalId = null
@@ -40,9 +41,9 @@ class GameBoard extends Component {					//when refactoring make this presentatio
  		<div id="scoreboard">
  		<div className="numOfMines">
 		<div>Num of Mines</div>
- 		{this.props.numOfMines}
+ 		{this.state.numOfMines}
  		</div>
- 		<Timer firstClick={this.state.firstClick} time={this.props.time} />
+ 		<Timer time={this.props.time} />
  		</div>
  		{cells}
  		</div>
