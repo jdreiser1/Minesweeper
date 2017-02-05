@@ -41,7 +41,7 @@ class GameBoard extends Component {					//when refactoring make this presentatio
  		<div id="scoreboard">
  		<div className="numOfMines">
 		<div>Num of Mines</div>
- 		{this.state.numOfMines}
+ 		{this.props.numOfMines}
  		</div>
  		<Timer time={this.props.time} />
  		</div>
