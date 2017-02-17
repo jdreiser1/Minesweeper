@@ -10,7 +10,8 @@ let boardFunctions = {
 				target.appendChild(img);
 				x.setState({numOfMines: x.state.numOfMines - 1}, () => console.log(x.state.numOfMines));
 				if (x.props.board[position[0]][position[1]]){
-					x.setState({minesLeftToWin: x.state.minesLeftToWin - 1}, () => console.log(x.state.minesLeftToWin));
+					x.setState({minesLeftToWin: x.state.minesLeftToWin - 1}, () => {if (x.states.minesLeftToWin === 0) {
+					console.log("won")} })
 				}
 			}else {
 		if (x.props.board[position[0]][position[1]]){ //Check if the element the player picked has a mine
@@ -43,14 +44,6 @@ let boardFunctions = {
 			counter += 1
 		}
 		target.append("" + counter)
-		x.setState({
-			numOfFreeSpaces: x.state.numOfFreeSpaces - 1
-		}, () => {
-		if (x.state.numOfFreeSpaces === 0){
-			console.log("You Won")
-			let el2 = document.getElementById("Won")
-			el2.style.display = "block"
-		}
 		if (counter === 0){
 			x.setState({numOfFreeSpaces: x.state.numOfFreeSpaces - 1}, () => {
 			this.evalMine(null, index1 - 1, [position[0],position[1]-1], x)
@@ -63,7 +56,6 @@ let boardFunctions = {
 			this.evalMine(null, index1 + x.props.board[0].length + 1, [position[0]+1, position[1]+1], x)
 			})
 		}
-	})
 }}
 }
 }
