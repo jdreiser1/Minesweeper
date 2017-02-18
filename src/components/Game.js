@@ -75,11 +75,16 @@ class Game extends Component {
 	board[x][y] = true;
 	}
 	}
+
 	let self = this
+
 	this.state.intervalId = setInterval(function(){
 		self.setState(
 			{time: self.state.time + 1}
-			)}, 1000)
+		)},
+	1000)
+
+	console.log(this.state.intervalId);
 	let elementList = document.querySelectorAll(".col-xs-4")
 	elementList.forEach((val) => val.innerHTML = "")
 	this.setState({

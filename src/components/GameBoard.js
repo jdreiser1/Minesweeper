@@ -18,7 +18,12 @@ class GameBoard extends Component {					//when refactoring make this presentatio
 		}
 		this.intervalId = null
 	}
-
+	componentWillReceiveProps(nextProps) {
+	  // You don't have to do this check first, but it can help prevent an unneeded render
+	  if (nextProps.numOfMines !== this.state.numOfMines) {
+	    this.setState({ numOfMines: nextProps.numOfMines });
+	  }
+	}
 	clickOn(evt, index1, position){
 		boardFunctions.evalMine(evt, index1, position, this);
 	}
@@ -45,7 +50,9 @@ class GameBoard extends Component {					//when refactoring make this presentatio
  		</div>
  		<Timer time={this.props.time} />
  		</div>
- 		{cells}
+		<div className="container">
+		{cells}
+		</div>
  		</div>
 	)
 	}

@@ -102,6 +102,7 @@ body {
 .row {
   margin-right: -15px;
   margin-left: -15px;
+  /*margin-bottom: -6px;*/
 }
 .outer {
   width: 70%;
@@ -125,17 +126,18 @@ body {
   border: 1px solid black;
 }
 
-.col-xs-4 {
-  display: flex;
+.cell-style {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 40px;
+  height: 20px;
   width: 20px;
-  font-size: 120%;
+  font-size: 75%;
   background:rgba(255,255,255,0.75);
   overflow: hidden;
   line-height:4em;
   text-align:center;
-  border:6px outset white;
+  border:3px outset white;
   box-shadow: 5px 5px 15px rgba(255,255,255,0.4);
+  vertical-align: top;
 }
