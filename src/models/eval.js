@@ -1,12 +1,7 @@
 let boardFunctions = {
 		evalMine(evt, index1, position, x){
-		console.log('evt: ', evt);
-		console.log('index1: ', index1);
-		console.log('position: ', position);
-		console.log('x: ', x);
 
 		let target = document.querySelector(`[data-index="${index1}"]`);
-		console.log(target);
 		let counter = 0;
 		if (target && !target.innerHTML && x.props.board[position[0]] && x.props.board[position[1]]){
 			if (evt && evt.shiftKey){
@@ -16,8 +11,8 @@ let boardFunctions = {
 				target.appendChild(img);
 				// x.setState({numOfMines: x.state.numOfMines - 1}, () => console.log(x.state.numOfMines));
 				if (x.props.board[position[0]][position[1]]){
-					x.setState({minesLeftToWin: x.state.minesLeftToWin - 1}, () => {if (x.state.minesLeftToWin === 0) {
-					console.log("won")} })
+					x.setState({minesLeftToWin: x.state.numOfMines - 1}, () => {if (x.state.numOfMines === 0) {
+					console.log("won")}});
 				}
 			}else {
 		if (x.props.board[position[0]][position[1]]){ //Check if the element the player picked has a mine
