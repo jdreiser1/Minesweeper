@@ -3,10 +3,6 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
 body {
   background: url(../public/img/mines.jpg) no-repeat center center fixed;
   background-size: cover;
@@ -14,22 +10,6 @@ body {
 #font{
   font-family: 'Stardos Stencil', bold;
 }
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
 
 #Lose {
   position: absolute;
@@ -37,6 +17,7 @@ body {
   font-size: 30px;
   display: none;
   z-index: 2;
+  color: red;
   animation: youLoseAnimation 10s;
 }
 #Won {
@@ -44,6 +25,7 @@ body {
   top: 50%;
   z-index: 2;
   font-size: 30px;
+  color: red;
   display: none;
   animation: youLoseAnimation 10s;
 }
@@ -96,33 +78,15 @@ body {
   border: 5px solid black;
 }
 
-.brow {
-  min-height: 23px;
-}
 .row {
   margin-right: -15px;
   margin-left: -15px;
-  /*margin-bottom: -6px;*/
-}
-.outer {
-  width: 70%;
-  margin: 0 auto;
-  border: 1px solid red;
-  max-width: 140px;
-  max-height: 140px;
-  padding: 10px;
-}
-.container3{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 .cell{
   position: relative;
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
-  /*width: 33px;*/
   border: 1px solid black;
 }
 

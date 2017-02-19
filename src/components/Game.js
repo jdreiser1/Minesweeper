@@ -19,7 +19,7 @@ class Game extends Component {
 		numOfMines: 10,
 		time: 0,
 		intervalId: null,
-		firstClick: true
+		mineSet: true
 	}
 		this.newGame();
 	}
@@ -53,6 +53,10 @@ class Game extends Component {
 	}
 
 	newGame(){
+	let el = document.getElementById("Won")
+	if (el){
+		el.style.display = "none"
+	}
 	let el2 = document.getElementById("Lose")
 	if (el2){
 		el2.style.display = "none"
@@ -91,6 +95,7 @@ class Game extends Component {
 		board: board,
 		numOfMines: numOfMines,
 		time: 0,
+		mineSet: true
 	})
 	}
 	render(){
@@ -101,6 +106,7 @@ class Game extends Component {
 			board={this.state.board}
 			time={this.state.time}
 			numOfMines={this.state.numOfMines}
+			mineSet={this.state.mineSet}
 			// intervalId={this.state.intervalId}
 		/>
 		<div id="buttons">

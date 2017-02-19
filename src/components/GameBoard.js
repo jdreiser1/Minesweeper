@@ -12,16 +12,16 @@ class GameBoard extends Component {					//when refactoring make this presentatio
 		super(props)
 		this.state = {
 			// time: this.props.time,
+			mineSet: this.props.mineSet,
 			numOfMines: this.props.numOfMines,
 			minesLeftToWin: this.props.numOfMines,
 			numOfFreeSpaces: (this.props.board.length * this.props.board.length) - this.props.numOfMines
 		}
-		this.intervalId = null
 	}
 	componentWillReceiveProps(nextProps) {
 	  // You don't have to do this check first, but it can help prevent an unneeded render
-	  if (nextProps.numOfMines !== this.state.numOfMines) {
-	    this.setState({ numOfMines: nextProps.numOfMines });
+	  if (nextProps.numOfMines !== this.state.numOfMines && this.state.mineSet) {
+	    this.setState({ numOfMines: nextProps.numOfMines })
 	  }
 	}
 	clickOn(evt, index1, position){
