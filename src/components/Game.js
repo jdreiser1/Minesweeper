@@ -29,8 +29,8 @@ class Game extends Component {
 		let length; //change to dimension
 		let numOfMines;
 		if (difficulty === "Beginner"){
-			length = 3;
-			numOfMines = 1;
+			length = 8;
+			numOfMines = 10;
 		}else if (difficulty === "Intermediate"){
 			length = 16;
 			numOfMines = 40;
